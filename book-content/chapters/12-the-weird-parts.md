@@ -113,15 +113,16 @@ This can make you _think_ that TypeScript cares about excess properties - but it
 This behavior can be frustrating when you misspell the names of an optional parameter. Imagine you misspell `timeout` as `timeOut`:
 
 ```typescript
-const fetch = (options: { timeout?: number }) => {
+const myFetch = (options: { url: string; timeout?: number }) => {
   // Implementation
 };
 
 const options = {
+  url: "/",
   timeOut: 1000,
 };
 
-fetch(options); // No error!
+myFetch(options); // No error!
 ```
 
 In this case, TypeScript won't show an error, and you won't get the runtime behavior you expect. The only way to source the error would be to provide a type annotation for the `options` object:
@@ -459,7 +460,7 @@ playSong(Song);
 
 In this case, TypeScript shows an error when we try to pass the `Song` class itself to the `playSong` function. This is because `Song` is a class, and not an instance of the class.
 
-So, classes exists in both the type and value worlds, and represents an instance of the class when used as a type.
+So, classes exist in both the type and value worlds, and represent an instance of the class when used as a type.
 
 ### Enums
 
